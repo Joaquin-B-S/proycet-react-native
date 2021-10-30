@@ -52,7 +52,12 @@ const estilos = StyleSheet.create({
         marginVertical: 15,
         marginHorizontal: 30,
         borderRadius: 20,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.4,
+        shadowRadius: 3,  
+        elevation: 5
     }
 })
 
