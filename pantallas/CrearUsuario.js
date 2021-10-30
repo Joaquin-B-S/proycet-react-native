@@ -87,7 +87,7 @@ const estilos = StyleSheet.create({
         padding: 35
     },
     inputGroup: {
-        felx: 1,
+        flex: 1,
         padding: 0,
         marginBottom: 15,
         borderBottomWidth: 1,

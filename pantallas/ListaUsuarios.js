@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {View, Text, ScrollView, Button} from 'react-native'
+import {ScrollView, Button, StyleSheet} from 'react-native'
 import {ListItem} from 'react-native-elements'
 
 const listaUsuarios = (props) => {
@@ -29,7 +29,7 @@ const listaUsuarios = (props) => {
             {
                 funcionarios.map(funcionario => {
                     return (
-                        <ListItem key={funcionario.id} bottomDivider onPress={() => props.navigation.navigate('DetallesUsuario', {
+                        <ListItem style={estilos.list} key={funcionario.id} bottomDivider onPress={() => props.navigation.navigate('DetallesUsuario', {
                             funcionarioId: funcionario.id
                         })}>
                             <ListItem.Chevron />
@@ -46,5 +46,14 @@ const listaUsuarios = (props) => {
         </ScrollView>
     )
 }
+
+const estilos = StyleSheet.create({
+    list: {
+        marginVertical: 15,
+        marginHorizontal: 30,
+        borderRadius: 20,
+        overflow: 'hidden'
+    }
+})
 
 export default listaUsuarios

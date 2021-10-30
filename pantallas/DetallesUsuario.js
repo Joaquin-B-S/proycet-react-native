@@ -72,7 +72,7 @@ const DetallesUsuario = (props) => {
             <Text>Hora de salida:</Text>
             <TextInput value={state.horaFinal} onChangeText={(value) => setState({...state, horaFinal: value})} />
         </View>
-        <View>
+        <View style={estilos.boton}>
             <Button color="#19AC52" title="Actualizar información" onPress={() => alert('works')}/>
         </View>
         <View>
@@ -88,11 +88,14 @@ const estilos = StyleSheet.create({
         padding: 35
     },
     inputGroup: {
-        felx: 1,
+        flex: 1,
         padding: 0,
         marginBottom: 15,
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc'
+    },
+    boton: {
+        marginBottom: 10,
     }
 })
 
