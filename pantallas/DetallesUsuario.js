@@ -14,7 +14,7 @@ const DetallesUsuario = (props) => {
     })
     
     const obtenerUsuario = id => {
-        fetch('https://jsoza.ilab.cl/joaquin.baeza/')
+        fetch('https://jsoza.ilab.cl/joaquin.baeza/consultar.php')
             .then(respuesta => respuesta.json())
             .then(data => {
                 const funcionario = data.filter(funcionario => funcionario.id == id);
@@ -26,16 +26,47 @@ const DetallesUsuario = (props) => {
             })
     }
 
-    const eliminarUsuario = async () => {
+    const eliminarUsuario = () => {
         const id = props.route.params.funcionarioId
-        try {
-            await fetch(`https://jsoza.ilab.cl/joaquin.baeza/?id=${id}`, {
-                method: "DELETE",
-            });
-        } catch (error) {
-            console.log(error)
-        }
-            
+        fetch('https://jsoza.ilab.cl/joaquin.baeza/eliminar.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            mode: 'no-cors',
+            body: JSON.stringify({
+                id: id
+            })
+        }).then(respuesta => respuesta.json())
+        .then(respuestaJson => alert(respuestaJson))
+        .catch(error => console.log(error));
+        props.navigation.navigate('ListaUsuarios');
+    }
+
+    const actualizarUsuario = () => {
+        const id = props.route.params.funcionarioId
+        fetch('https://jsoza.ilab.cl/joaquin.baeza/actualizar.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            mode: 'no-cors',
+            body: JSON.stringify({
+                id: id,
+                nombre: state.nombre,
+                apellido: state.apellido,
+                cargo: state.cargo,
+                email: state.email,
+                telefono: state.telefono,
+                horaInicio: state.horaInicio,
+                horaFinal: state.horaFinal,
+            })
+        }).then(respuesta => respuesta.json())
+        .then(respuestaJson => alert(respuestaJson))
+        .catch(error => console.log(error));
+        props.navigation.navigate('ListaUsuarios');
     }
 
     useEffect(() => {
@@ -73,7 +104,7 @@ const DetallesUsuario = (props) => {
             <TextInput value={state.horaFinal} onChangeText={(value) => setState({...state, horaFinal: value})} />
         </View>
         <View style={estilos.boton}>
-            <Button color="#19AC52" title="Actualizar información" onPress={() => alert('works')}/>
+            <Button color="#19AC52" title="Actualizar información" onPress={() => actualizarUsuario()}/>
         </View>
         <View>
             <Button color="#E37399" title="Eliminar funcionario" onPress={() => eliminarUsuario()}/>

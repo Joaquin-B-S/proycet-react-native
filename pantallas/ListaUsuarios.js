@@ -7,20 +7,20 @@ const listaUsuarios = (props) => {
     const [funcionarios, setFuncionario] = useState([])
 
     useEffect(() => {
-        const usurarios = [];
-        fetch('https://jsoza.ilab.cl/joaquin.baeza/')
+        const usuarios = [];
+        fetch('https://jsoza.ilab.cl/joaquin.baeza/consultar.php')
             .then(respuesta => respuesta.json())
             .then(data => {
                 data.forEach(funcionario => {
                     const {id, nombre, apellido, cargo} = funcionario
-                    usurarios.push({
+                    usuarios.push({
                         id,
                         nombre,
                         apellido,
                         cargo
                     });
                 });
-                setFuncionario(usurarios)
+                setFuncionario(usuarios)
             })
     }, []);
 

@@ -13,32 +13,28 @@ const CrearUsuario = (props) => {
         horaFinal: '',
     })
 
-    const guardarUsuario = async () => {
-        if (state.nombre === '' || state.apellido === '' || state.email === '' || state.telefono === '' || state.cargo === '' || state.horaEntrada === '' || state.horaSalida === '') {
+    const guardarUsuario = () => {
+        if (state.nombre === '' || state.apellido === '' || state.email === '' || state.telefono === '' || state.cargo === '' || state.horaInicio === '' || state.horaFinal === '') {
             alert('Todos los campos son obligatorios')
         } else {
-            try {
-                await fetch('https://jsoza.ilab.cl/joaquin.baeza/', {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: JSON.stringify({
-                        nombre: state.nombre,
-                        apellido: state.apellido,
-                        cargo: state.cargo,
-                        email: state.email,
-                        telefono: state.telefono,
-                        horaInicio: state.horaEntrada,
-                        horaFinal: state.horaSalida
-                    }),
-                    headers: {
-                        "Accept": "application/json",
-                        'Content-Type': 'application/json; charset=UTF-8'
-                    },
+            fetch('https://jsoza.ilab.cl/joaquin.baeza/insertar.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                mode: 'no-cors',
+                body: JSON.stringify({
+                    nombre: state.nombre,
+                    apellido: state.apellido,
+                    cargo: state.cargo,
+                    email: state.email,
+                    telefono: state.telefono,
+                    horaInicio: state.horaInicio,
+                    horaFinal: state.horaFinal,
                 })
-                props.navigation.navigate('ListaUsuarios');
-            } catch (error) {
-                console.log(error)
-            }
+            }).then(respuesta => respuesta.json()).then(respuestaJson => alert(respuestaJson)).catch(error => console.log(error));
+            props.navigation.navigate('ListaUsuarios');
         }
     }
 
