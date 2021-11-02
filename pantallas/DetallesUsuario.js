@@ -38,9 +38,11 @@ const DetallesUsuario = (props) => {
             body: JSON.stringify({
                 id: id
             })
-        }).then(respuesta => respuesta.json())
-        .then(respuestaJson => alert(respuestaJson))
-        .catch(error => console.log(error));
+        })
+        // .then(respuesta => respuesta.json())
+        // .then(respuestaJson => alert(respuestaJson))
+        // .catch(error => console.log(error));
+        alert('Funcionario eliminado con exito');
         props.navigation.navigate('ListaUsuarios');
     }
 
@@ -63,9 +65,11 @@ const DetallesUsuario = (props) => {
                 horaInicio: state.horaInicio,
                 horaFinal: state.horaFinal,
             })
-        }).then(respuesta => respuesta.json())
-        .then(respuestaJson => alert(respuestaJson))
-        .catch(error => console.log(error));
+        })
+        // .then(respuesta => respuesta.json())
+        // .then(respuestaJson => alert(respuestaJson))
+        // .catch(error => console.log(error));
+        alert('Funcionario actualizado con exito');
         props.navigation.navigate('ListaUsuarios');
     }
 

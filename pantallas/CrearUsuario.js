@@ -33,7 +33,11 @@ const CrearUsuario = (props) => {
                     horaInicio: state.horaInicio,
                     horaFinal: state.horaFinal,
                 })
-            }).then(respuesta => respuesta.json()).then(respuestaJson => alert(respuestaJson)).catch(error => console.log(error));
+            })
+            // .then(respuesta => respuesta.json())
+            // .then(respuestaJson => alert(respuestaJson))
+            // .catch(error => console.log(error));
+            alert('Funcionario ingresado con exito');
             props.navigation.navigate('ListaUsuarios');
         }
     }
