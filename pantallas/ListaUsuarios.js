@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {ScrollView, Button, StyleSheet} from 'react-native'
+import {ScrollView, Button, StyleSheet,Text, TouchableOpacity, View} from 'react-native'
 import {ListItem} from 'react-native-elements'
 
 const listaUsuarios = (props) => {
@@ -42,7 +42,21 @@ const listaUsuarios = (props) => {
                 })
             }
 
-            <Button title="Ingresar nuevo funcionario" onPress={() => props.navigation.navigate('CrearUsuario')}/>
+
+            <TouchableOpacity style= {estilos.fabLocation}
+            onPress={() => props.navigation.navigate('CrearUsuario')} 
+            
+            >
+            
+                <View style= {estilos.fab} >
+                    <Text style={estilos.fabText}> +</Text>
+                </View>
+            </TouchableOpacity>
+           
+        
+            
+        
+        
         </ScrollView>
     )
 }
@@ -58,7 +72,36 @@ const estilos = StyleSheet.create({
         shadowOpacity: 0.4,
         shadowRadius: 3,  
         elevation: 5
+    },
+    fabLocation :{
+
+        position: 'absolute',
+        bottom: 8,
+        right:8
+
+
+
+    },
+    fab :{
+        backgroundColor:'blue',
+        width:60,
+        height:60,
+        borderRadius:100,
+        justifyContent: 'center'
+
+
+    },
+    fabText:{
+        color: 'white',
+        fontSize: 25,
+        fontWeight:'bold',
+        alignSelf: 'center'
+
+
+
+
     }
+
 })
 
 export default listaUsuarios
