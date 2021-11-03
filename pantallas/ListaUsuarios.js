@@ -49,7 +49,7 @@ const listaUsuarios = (props) => {
             >
             
                 <View style= {estilos.fab} >
-                    <Text style={estilos.fabText}> +</Text>
+                    <Text style={estilos.fabText}>+</Text>
                 </View>
             </TouchableOpacity>
            

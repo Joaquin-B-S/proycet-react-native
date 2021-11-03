@@ -13,7 +13,7 @@ import CrearUsuaio from './pantallas/CrearUsuario'
 function MiStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="ListaUsuarios" component={ListaUsuarios} options={{title: 'Funcionarios'}}/>
+      <Stack.Screen name="ListaUsuarios" component={ListaUsuarios} options={{title: 'One List'}}/>
       <Stack.Screen name="CrearUsuario" component={CrearUsuaio} options={{title: 'Crear nuevo funcionario'}}/>
       <Stack.Screen name="DetallesUsuario" component={DetallesUsuario} options={{title: 'Detalles del funcionario'}}/>
     </Stack.Navigator>
